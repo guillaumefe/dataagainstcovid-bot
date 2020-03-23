@@ -6,7 +6,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/',function(req,res){
-  res.end('Welcome to the slackbot "community" for "data against covid-19" https://app.slack.com/client/TUQTGE7FU')
+  res.end('Welcome to the slackbot "community" for [data against covid-19](https://app.slack.com/client/TUQTGE7FU)')
 });
 
 app.post('/',function(req,res){
@@ -22,12 +22,12 @@ app.post('/',function(req,res){
       for (let key in commands) {
         answer += '- ' + key + '\n'
       }
-      answer += "Pour poser une question à ce robot, utilisez la syntax suivante : /community [Ma Question]\n"
-      answer += "Par exemple : /community je veux proposer mon aide"
+      answer += "Pour poser une question à ce robot, utilisez la syntax suivante : ```/community [Ma Question]```\n"
+      answer += "Par exemple : ```/community je veux proposer mon aide```"
   } else if (commands[req.body.text.toLowerCase()]) {
       answer = commands[req.body.text.toLowerCase()]
   } else {
-      answer = 'Commande inconnue. Utilisez le mot-clé "aide" pour plus d\'information.'
+      answer = 'Commande inconnue. Utilisez le mot-clé ```aide``` pour plus d\'information.'
   }
 
   res.end(answer)
