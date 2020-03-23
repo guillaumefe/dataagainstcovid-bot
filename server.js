@@ -27,7 +27,7 @@ app.post('/',function(req,res){
   } else if (commands[req.body.text.toLowerCase()]) {
       answer = commands[req.body.text.toLowerCase()]
   } else {
-      answer = 'Commande inconnue. Utilisez le mot-clé ```aide``` pour plus d\'information.'
+      answer = 'Commande inconnue. Utilisez la commande ```/community aide``` pour plus d\'information.'
   }
 
   res.end(answer)
