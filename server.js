@@ -17,13 +17,15 @@ app.post('/',function(req,res){
 
   if (req.body.text == "") {
       answer = aide
-  } else if (req.body.text == "aide") {
+  } else if (req.body.text.toLowerCase() == "aide") {
       answer = "Questions que vous pourriez posez :\n"
       for (let key in commands) {
         answer += '- ' + key + '\n'
       }
-  } else if (commands[req.body.text]) {
-      answer = commands[req.body.text]
+      answer += "Pour poser une question à ce robot, utilisez la syntax suivante : /community [Ma Question]"
+      answer += "Par exemple : /community je veux proposer mon aide"
+  } else if (commands[req.body.text.toLowerCase()]) {
+      answer = commands[req.body.text.toLowerCase()]
   } else {
       answer = 'Commande inconnue. Utilisez le mot-clé "aide" pour plus d\'information.'
   }
