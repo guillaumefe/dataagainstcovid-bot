@@ -18,11 +18,13 @@ app.post('/',function(req,res){
   if (req.body.text == "") {
       answer = aide
   } else if (req.body.text.toLowerCase() == "aide") {
-      answer = "*Questions que vous pourriez posez :*\n"
+      answer = "Bienvenue sur Community, le robot d'aide à l'action du slack *Data Against Covid-19*\n"
+      answer += "Merci d'être ici, nous avons besoin de vous!\n\n"
+      answer += "Pour poser une question à ce robot, utilisez la syntax suivante : ```/community [Ma Question]```\n"
+      answer += "*Questions que vous pourriez posez :*\n"
       for (let key in commands) {
         answer += '- ' + key + '\n'
       }
-      answer += "Pour poser une question à ce robot, utilisez la syntax suivante : ```/community [Ma Question]```\n"
       answer += "Par exemple : ```/community je veux proposer mon aide```"
   } else if (commands[req.body.text.toLowerCase()]) {
       answer = commands[req.body.text.toLowerCase()]
