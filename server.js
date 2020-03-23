@@ -22,7 +22,7 @@ app.post('/',function(req,res){
       for (let key in commands) {
         answer += '- ' + key + '\n'
       }
-      answer += "Pour poser une question à ce robot, utilisez la syntax suivante : /community [Ma Question]"
+      answer += "Pour poser une question à ce robot, utilisez la syntax suivante : /community [Ma Question]\n"
       answer += "Par exemple : /community je veux proposer mon aide"
   } else if (commands[req.body.text.toLowerCase()]) {
       answer = commands[req.body.text.toLowerCase()]
