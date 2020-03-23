@@ -1,21 +1,19 @@
-    var http = require('http');
-    var server = http.createServer ( function(request,response){
+var express = require("express");
+var bodyParser = require("body-parser");
+var app = express();
 
-    response.writeHead(200,{"Content-Type":"text\plain"});
-    if(request.method == "GET")
-        {
-            response.end("received GET request.")
-        }
-    else if(request.method == "POST")
-        {
-            response.end("received POST request.");
-        }
-    else
-        {
-            response.end("Undefined request .");
-        }
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.get('/',function(req,res){
+  res.end('Welcome to the slackbot "community" for "data against covid-19" https://app.slack.com/client/TUQTGE7FU')
+});
+
+app.post('/',function(req,res){
+  res.end(req.body)
 });
 
 port = process.env.PORT || 8000
-server.listen(port);
-console.log("Server running on port " + port);
+app.listen(port,function(){
+  console.log("Started on PORT 8000");
+})
