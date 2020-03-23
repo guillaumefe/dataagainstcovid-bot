@@ -15,7 +15,7 @@ app.post('/',function(req,res){
   let commands = require('./commands.json');
 
   if (req.body.text == "") {
-      answer = "Ce service vous aidera a orienter correctement votre action sur ce slack
+      answer = "Ce service vous aidera a orienter correctement votre action sur ce slack"
   } else if (req.body.text == "aide") {
       answer = JSON.stringify(Object.keys(dictionary));
   } else if (commands[req.body.text]) {
