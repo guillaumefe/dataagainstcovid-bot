@@ -16,5 +16,5 @@
         }
 });
 
-server.listen(8000);
+server.listen(80);
 console.log("Server running on port 8000");
