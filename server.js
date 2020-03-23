@@ -18,7 +18,7 @@ app.post('/',function(req,res){
   if (req.body.text == "") {
       answer = aide
   } else if (req.body.text.toLowerCase() == "aide") {
-      answer = "**Questions que vous pourriez posez :**\n"
+      answer = "*Questions que vous pourriez posez :*\n"
       for (let key in commands) {
         answer += '- ' + key + '\n'
       }
