@@ -17,7 +17,10 @@ app.post('/',function(req,res){
   if (req.body.text == "") {
       answer = commands['aide']
   } else if (req.body.text == "aide") {
-      answer = JSON.stringify(Object.keys(commands));
+      answer = "Questions que vous pourriez posez :\n"
+      for (let key in commands) {
+        answer += key + '\n'
+      }
   } else if (commands[req.body.text]) {
       answer = commands[req.body.text]
   } else {
