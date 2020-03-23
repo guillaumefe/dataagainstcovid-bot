@@ -10,7 +10,7 @@ app.get('/',function(req,res){
 });
 
 app.post('/',function(req,res){
-  res.end(req.body)
+  res.end(JSON.stringify(req.body))
 });
 
 port = process.env.PORT || 8000
