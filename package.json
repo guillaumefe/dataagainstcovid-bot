@@ -1,0 +1,23 @@
+{
+  "name": "dataagainstcovid-bot",
+  "version": "1.0.0",
+  "description": "Bot that helps community with tasks and organization",
+  "main": "server.js",
+  "engines": {
+    "node": "12.*"
+  },
+  "scripts": {
+    "test": "",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gefeo/dataagainstcovid-bot.git"
+  },
+  "author": "Guillaume Ferron",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/gefeo/dataagainstcovid-bot/issues"
+  },
+  "homepage": "https://github.com/gefeo/dataagainstcovid-bot#readme"
+}
