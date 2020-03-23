@@ -15,11 +15,13 @@ app.post('/',function(req,res){
   let commands = require('./commands.json');
 
   if (req.body.text == "") {
-      answer = JSON.stringify(commands)
+      answer = "Ce service vous aidera a orienter correctement votre action sur ce slack
+  } else if (req.body.text == "aide") {
+      answer = JSON.stringify(Object.keys(dictionary));
   } else if (commands[req.body.text]) {
       answer = commands[req.body.text]
   } else {
-      answer = "Unknown command."
+      answer = 'Commande inconnue. Utilisez le mot-clé "aide" pour plus d\'information.'
   }
 
   res.end(answer)
