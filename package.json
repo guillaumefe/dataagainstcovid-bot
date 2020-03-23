@@ -7,7 +7,7 @@
     "node": "12.*"
   },
   "scripts": {
-    "test": "",
+    "test": "node test.js",
     "start": "node server.js"
   },
   "repository": {
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/gefeo/dataagainstcovid-bot/issues"
   },
-  "homepage": "https://github.com/gefeo/dataagainstcovid-bot#readme"
+  "homepage": "https://github.com/gefeo/dataagainstcovid-bot#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0"
+  }
 }
