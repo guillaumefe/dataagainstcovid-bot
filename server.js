@@ -17,7 +17,7 @@ app.post('/',function(req,res){
   if (req.body.text == "") {
       answer = "Ce service vous aidera a orienter correctement votre action sur ce slack"
   } else if (req.body.text == "aide") {
-      answer = JSON.stringify(Object.keys(dictionary));
+      answer = JSON.stringify(Object.keys(commands));
   } else if (commands[req.body.text]) {
       answer = commands[req.body.text]
   } else {
