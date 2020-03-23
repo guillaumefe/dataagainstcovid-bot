@@ -1,5 +1,5 @@
 # dataagainstcovid-bot
-Robot d'aide à l'action collective pour le slack Data Agains Covid-19
+Robot d'aide à l'action collective pour le slack [Data Against Covid-19](https://app.slack.com/client/TUQTGE7FU/)
 
 *Pour contribuer à ce projet:*
 - Pour ajouter une commande au robot:
