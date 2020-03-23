@@ -10,7 +10,20 @@ app.get('/',function(req,res){
 });
 
 app.post('/',function(req,res){
-  res.end(JSON.stringify(req.body.text))
+
+  let answer = ""
+  let commands = require('./commands.json');
+
+  if (req.body.text == "") {
+      answer = JSON.stringify(commands)
+  } else if (commands[req.body.text]) {
+      answer = commands[req.body.text]
+  } else {
+      answer = "Unknown command."
+  }
+
+  res.end(answer)
+
 });
 
 port = process.env.PORT || 8000
