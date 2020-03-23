@@ -25,7 +25,7 @@ app.post('/',function(req,res){
       for (let key in commands) {
         answer += '- ' + key + '\n'
       }
-      answer += "\nPar exemple : ```/community je veux proposer mon aide```"
+      answer += "\nPar exemple : ```/community je veux proposer mon aide```\n"
       answer += "*La liste des questions va s'accroitre de manière régulière jusqu'à pouvoir vous aider dans tous les aspects de votre participation.*"
   } else if (commands[req.body.text.toLowerCase()]) {
       answer = commands[req.body.text.toLowerCase()]
