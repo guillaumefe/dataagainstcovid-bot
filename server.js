@@ -13,7 +13,7 @@ app.post('/',function(req,res){
 
   let answer = ""
   let commands = require('./commands.json');
-  let aide = "Ce service vous aidera a orienter correctement votre action sur ce slack.\nVous pouvez poser certaines questions à ce robot et ce dernier vous aidera à obtenir la bonne réponse.\nPour obtenir la liste des questions que vous pouvez poser, utiliser la commande 'aide' de cette manière : /community aide"
+  let aide = "Ce service vous aidera a orienter correctement votre action sur ce slack.\nVous pouvez poser certaines questions à ce robot et ce dernier vous aidera à obtenir la bonne réponse.\nPour obtenir la liste des questions que vous pouvez poser, utiliser la commande 'aide' de cette manière : \n/community aide"
 
   if (req.body.text == "") {
       answer = aide
