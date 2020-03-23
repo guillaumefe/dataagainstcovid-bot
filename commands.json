@@ -1,5 +1,4 @@
 {
-    "test" : "Service is working",
     "aide" : "Ce service vous aidera a orienter correctement votre action sur ce slack.\nVous pouvez poser certaines questions à ce robot et ce dernier vous donnera la bonne réponse.\nPour obtenir la liste des questions que vous pouvez poser, utiliser la commande 'aide' de cette manière : /community aide",
     "je veux proposer mon aide" : "Veuillez remplir ce formulaire : https://docs.google.com/forms/d/e/1FAIpQLSdiw56eQNGkm5uQt7mlcR32n--J2rwfSgOYpF9eAKThFNv7rA/viewform",
     "je veux parler à un modérateur" : "Suivez ce lien pour comprendre comment faire : https://dataagainstcovid-19.slack.com/archives/C01072YS7MX/p1584833874003900",
