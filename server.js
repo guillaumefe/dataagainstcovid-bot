@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var fs = require("fs");
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,8 +15,16 @@ app.post('/',function(req,res){
   let answer = ""
   let commands = require('./commands.json');
   //"Ce service vous aidera à orienter correctement votre action sur ce slack.\nVous pouvez poser certaines questions à ce robot et ce dernier vous aidera à obtenir la bonne réponse.\nPour obtenir la liste des questions que vous pouvez poser, utilisez la commande 'aide' de cette manière : \n```/community aide```"
-
   
+  // Collect valid commands from commands.json and messages/commands/ folder 
+  let command_files_dir = './messages/commands/';
+  let command_files = fs.readdirSync(command_files_dir);
+  command_files.forEach(function (item, index) {
+    command_file = require(command_files_dir + "/" + item);
+    let new_key = [command_file["command"].toLowerCase()];
+    commands[new_key] = command_file["answer"];
+  });
+
   //TODO
   // Adapt code to search messages/ dir and not in commands object
   if (req.body.text == "") {
