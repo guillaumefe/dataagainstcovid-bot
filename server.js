@@ -95,8 +95,11 @@ app.post('/',function(req,res){
 
   // A bit of console logging of the request
   console.log(req.body.trigger_id + ', ' + req.body.channel_name + ', '
-    + req.body.user_name + ', ' + req.body.command + ', ' + req.body.text + ', ');
+    + req.body.user_name + ', ' + req.body.command + ', ' + req.body.text + ', '
+  );
 
+  console.log("request:")
+  console.log(req.body)
   res.send(answer)
 
 });

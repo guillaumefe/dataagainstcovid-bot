@@ -1,0 +1,28 @@
+{
+    "command": ["J'ai besoin d'aide pour un projet", "besoin-aide"],
+    "answer": {
+        "text": "*Votre projet est lancé et vous avez besoin d'aide?*\n",
+        "attachments": [
+            {
+                "fallback": "You are unable to choose a game",
+                "color": "#3AA3E3",
+                "callback_id": "interactif-besoin-aide",
+                "attachment_type": "default",
+                "actions": [
+                    {
+                        "name": "besoin-aide",
+						"type": "button",
+                        "text": "Pas encore lancé mon projet",
+                        "value": "nouveau-projet"
+                    },
+                    {
+                        "name": "besoin-aide",
+						"type": "button",
+                        "text": "Oui",
+                        "value": "trouve-aide"
+                    }
+                ]
+            }
+        ]
+    }
+}
