@@ -21,8 +21,18 @@ app.post('/',function(req,res){
   let command_files = fs.readdirSync(command_files_dir);
   command_files.forEach(function (item, index) {
     command_file = require(command_files_dir + "/" + item);
-    let new_key = [command_file["command"].toLowerCase()];
-    commands[new_key] = command_file["answer"];
+    let new_keys = [];
+    try {
+      command_file["command"].forEach(function (phrase, _phrase_index){
+        new_keys.push(phrase.toLowerCase());
+      });
+    } catch (err) {
+      new_keys = [command_file["command"].toLowerCase()];
+    }
+    
+    new_keys.forEach(function (new_key, _key_index){
+      commands[new_key] = command_file["answer"];
+    });
   });
 
   //TODO

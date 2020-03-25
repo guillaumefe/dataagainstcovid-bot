@@ -1,5 +1,5 @@
 {
-    "command":"Je veux proposer un projet",
+    "command": ["Je veux proposer un projet", "nouveau-projet"],
     "answer": {
         "blocks": [
             {
