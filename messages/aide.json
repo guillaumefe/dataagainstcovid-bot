@@ -4,7 +4,7 @@
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-                "text": "*Bienvenue sur Community*, le robot d'aide à l'action du slack *Data Against Covid-19*\nMerci d'être ici, nous avons besoin de vous!\n\nPour poser une question à ce robot, utilisez la syntax suivante : ```/community [Ma Question]```\nQuestions que vous pouvez posez :*\n"
+                "text": "*Bienvenue sur Community*, le robot d'aide à l'action du slack *Data Against Covid-19*\nMerci d'être ici, nous avons besoin de vous!\n\nPour poser une question à ce robot, utilisez la syntax suivante : ```/community [Ma Question]```\nQuestions que vous pouvez posez :\n"
 			}
         },
         {
