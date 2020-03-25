@@ -13,27 +13,38 @@ app.get('/',function(req,res){
 app.post('/',function(req,res){
 
   let answer = ""
+  // Load old format commands from commands.json
   let commands = require('./commands.json');
-  //"Ce service vous aidera à orienter correctement votre action sur ce slack.\nVous pouvez poser certaines questions à ce robot et ce dernier vous aidera à obtenir la bonne réponse.\nPour obtenir la liste des questions que vous pouvez poser, utilisez la commande 'aide' de cette manière : \n```/community aide```"
-  
+  let command_map = {};
+
+  function add_to_command_map (map, key, phrase) {
+    // Function which adds command aliases to an alias -> command map
+    map[phrase.toLowerCase()] = key.toLowerCase();
+    map[phrase] = key.toLowerCase();
+  }
+
+  for (let key in commands) {
+    add_to_command_map(command_map, key, key);
+  }
   // Collect valid commands from commands.json and messages/commands/ folder 
   let command_files_dir = './messages/commands/';
   let command_files = fs.readdirSync(command_files_dir);
+
   command_files.forEach(function (item, index) {
     command_file = require(command_files_dir + "/" + item);
-    let new_keys = [];
+    let new_key = ""
     try {
+      new_key = command_file["command"][0];
       command_file["command"].forEach(function (phrase, _phrase_index){
-        new_keys.push(phrase.toLowerCase());
+        add_to_command_map(command_map, new_key, phrase);
       });
     } catch (err) {
-      new_keys = [command_file["command"].toLowerCase()];
+      new_key = command_file["command"];
+      add_to_command_map(command_map, new_key, new_key);
     }
-    
-    new_keys.forEach(function (new_key, _key_index){
-      commands[new_key] = command_file["answer"];
-    });
+    commands[new_key.toLowerCase()] = command_file["answer"];
   });
+  console.log(command_map);
 
   //TODO
   // Adapt code to search messages/ dir and not in commands object
@@ -48,8 +59,8 @@ app.post('/',function(req,res){
       }
       // store it in the empty section left in "aide.json"
       answer["blocks"][1]["text"]["text"] = command_list
-  } else if (commands[req.body.text.toLowerCase()]) {
-      answer = commands[req.body.text.toLowerCase()]
+  } else if (command_map[req.body.text.toLowerCase()]) {
+      answer = commands[command_map[req.body.text.toLowerCase()]];
   } else {
       answer = require('./messages/unknown_command_error.json');
   }
