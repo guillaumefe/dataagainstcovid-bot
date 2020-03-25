@@ -22,16 +22,22 @@ app.post('/',function(req,res){
       answer = require('./messages/_.json');
   } else if (req.body.text.toLowerCase() == "aide") {
       answer = require('./messages/aide.json');
+      // Explore commands object for the available commands and list them.
       let command_list = "";
       for (let key in commands) {
         command_list += ' :arrow_right:  ' + key + '\n'
       }
+      // store it in the empty section left in "aide.json"
       answer["blocks"][1]["text"]["text"] = command_list
   } else if (commands[req.body.text.toLowerCase()]) {
       answer = commands[req.body.text.toLowerCase()]
   } else {
       answer = require('./messages/unknown_command_error.json');
   }
+
+  // A bit of console logging of the request
+  console.log(req.body.trigger_id + ', ' + req.body.channel_name + ', '
+    + req.body.user_name + ', ' + req.body.command + ', ' + req.body.text + ', ');
 
   res.send(answer)
 
