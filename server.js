@@ -22,11 +22,11 @@ app.post('/',function(req,res){
       answer = require('./messages/_.json');
   } else if (req.body.text.toLowerCase() == "aide") {
       answer = require('./messages/aide.json');
-      answer += answer["blocks"][1]["text"]["text"]
+      let command_list = "";
       for (let key in commands) {
-        answer += '- ' + key + '\n'
+        command_list += ' :arrow_right:  ' + key + '\n'
       }
-      answer += answer["blocks"][3]["text"]["text"]
+      answer["blocks"][1]["text"]["text"] = command_list
   } else if (commands[req.body.text.toLowerCase()]) {
       answer = commands[req.body.text.toLowerCase()]
   } else {
