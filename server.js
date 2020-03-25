@@ -10,21 +10,34 @@ app.get('/',function(req,res){
   res.send('Welcome to the slackbot "community" for [data against covid-19](https://app.slack.com/client/TUQTGE7FU)')
 });
 
-// Prepare list of available commands
+// Prepare list of available "commands" and their answers
+// in the object "commands"
 // Load old format commands from commands.json
 let commands = require('./commands.json');
-let command_map = {};
 
-function add_to_command_map (map, key, phrase) {
-  // Function which adds command aliases to an alias -> command map
-  map[phrase.toLowerCase()] = key.toLowerCase();
-  map[phrase] = key.toLowerCase();
-}
+let command_map = {
+  "alias_to_cmd": {},
+  "cmd_to_alias": {},
+  // TODO: make command_map an object
+  add_key: function(key, phrase) {
+    // Function which adds command aliases to an alias -> command map
+    lower_case_key = key.toLowerCase();
+    this["alias_to_cmd"][phrase.toLowerCase()] = lower_case_key;
+    this["alias_to_cmd"][phrase] = lower_case_key;
+    if(lower_case_key in this["cmd_to_alias"]){
+      this["cmd_to_alias"][lower_case_key].push(phrase);
+    } else {
+      this["cmd_to_alias"][lower_case_key] = [phrase];
+    }
+  }
+};
+console.log(command_map)
 
 for (let key in commands) {
-  add_to_command_map(command_map, key, key);
+  command_map.add_key(key, key);
 }
 // Collect valid commands from commands.json and messages/commands/ folder 
+
 let command_files_dir = './messages/commands/';
 let command_files = fs.readdirSync(command_files_dir);
 
@@ -34,11 +47,11 @@ command_files.forEach(function (item, index) {
   try {
     new_key = command_file["command"][0];
     command_file["command"].forEach(function (phrase, _phrase_index){
-      add_to_command_map(command_map, new_key, phrase);
+      command_map.add_key(new_key, phrase);
     });
   } catch (err) {
     new_key = command_file["command"];
-    add_to_command_map(command_map, new_key, new_key);
+    command_map.add_key(new_key, new_key);
   }
   commands[new_key.toLowerCase()] = command_file["answer"];
 });
@@ -59,8 +72,8 @@ app.post('/',function(req,res){
       }
       // store it in the empty section left in "aide.json"
       answer["blocks"][1]["text"]["text"] = command_list
-  } else if (command_map[req.body.text.toLowerCase()]) {
-      answer = commands[command_map[req.body.text.toLowerCase()]];
+  } else if (command_map["alias_to_cmd"][req.body.text.toLowerCase()]) {
+      answer = commands[command_map["alias_to_cmd"][req.body.text.toLowerCase()]];
   } else {
       answer = require('./messages/unknown_command_error.json');
   }
