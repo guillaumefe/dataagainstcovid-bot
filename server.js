@@ -55,22 +55,37 @@ command_files.forEach(function (item, index) {
   }
   commands[new_key.toLowerCase()] = command_file["answer"];
 });
-console.log(command_map);
 
+// Explore commands object for the available commands and list them into
+// Slack markdown.
+let command_list = "";
+for (let key in commands) {
+  command_list += ' :arrow_right:  ' + key + ' ';
+  for (let i=1; i<command_map["cmd_to_alias"][key].length; i++){
+    if (i==1){
+      command_list += '(aka: ';
+    }
+    command_list += command_map["cmd_to_alias"][key][i]
+    if (i==command_map["cmd_to_alias"][key].length-1){
+      command_list += ')';
+    } else {
+      command_list += '; ';
+    }
+  }
+  command_list += "\n";
+}
+
+console.log(command_map);
+console.log(command_list);
+
+// Responds to messages
 app.post('/',function(req,res){
   let answer = ""
-  //TODO
-  // Adapt code to search messages/ dir and not in commands object
   if (req.body.text == "") {
       answer = require('./messages/_.json');
   } else if (req.body.text.toLowerCase() == "aide") {
       answer = require('./messages/aide.json');
-      // Explore commands object for the available commands and list them.
-      let command_list = "";
-      for (let key in commands) {
-        command_list += ' :arrow_right:  ' + key + '\n'
-      }
-      // store it in the empty section left in "aide.json"
+      // store the command it in the empty section left in "aide.json"
       answer["blocks"][1]["text"]["text"] = command_list
   } else if (command_map["alias_to_cmd"][req.body.text.toLowerCase()]) {
       answer = commands[command_map["alias_to_cmd"][req.body.text.toLowerCase()]];
