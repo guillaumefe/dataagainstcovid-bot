@@ -1,0 +1,11 @@
+{
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+                "text": "Commande inconnue. Utilisez la commande ```/community aide``` pour plus d'information."
+			}
+        }
+    ]
+}
