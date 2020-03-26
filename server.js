@@ -92,6 +92,7 @@ for (let key in commands) {
 // Parse commands in folders
 commandsFromFolder('./messages/commands/', commands, command_map);
 let command_list = generateCommandHelp(commands, command_map);
+commandsFromFolder('./messages/commands_hidden/', commands, command_map);
 
 console.log(command_map);
 console.log(command_list);
