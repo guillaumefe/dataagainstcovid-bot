@@ -1,0 +1,8 @@
+{
+    "command": ["Une nouvelle commande a executer", "nouvelle-cmd"],
+    "answer": {
+        // go to https://api.slack.com/tools/block-kit-builder?mode=message&blocks=%5B%5D
+        // To generate a valid and pretty Slack message response
+        // And paste it inside the answer field
+    }
+}

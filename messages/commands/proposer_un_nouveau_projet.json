@@ -1,0 +1,16 @@
+{
+    "command": ["Je veux proposer un projet", "nouveau-projet"],
+    "answer": {
+        "mrkdwn": "mrkdwn",
+        "text": "Quelques étapes pour faciliter le lancement d'un nouveau projet et le recrutement de membres:\n\n:dart: Avant de commencer vérifier <https://docs.google.com/spreadsheets/d/1UVFem7ICyRmX01QV0xUv4lCS4_k_sDS0OaKrZjG_dtw/edit?usp=sharing|la liste des projets et thématiques existantes> (si votre projet n'existe pas ajoutez le a la liste.)\n\n:dart: Identifiez le (ou les) thématiques (work package WP) auquel le projet se rattache\n\n:dart: Créez un canal Slack dédier a votre projet (le nom du canal doit être `prj-###-<nom du projet>` \"###\" est remplace par l'identifiant du work package) (e.g. pml pour #wp-pml-prediction-ml)\n\n:dart: Ajoutez une description a votre projet\n\n:dart: Copiez et remplissez le message d'accueil type, postez le sur votre nouveau canal et épinglez le pour que les nouveaux arrivant le retrouve facilement.\n\n:dart: Parlez de votre projet dans le canal du(des) work packages auquel il se rattache.\n\n:dart: Recrutez directement dans #reserve-tech #reserve-chefs-projets #reserve-autre",     
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "Quelques étapes pour faciliter le lancement d'un nouveau projet et le recrutement de membres:\n\n:dart: Avant de commencer vérifier <https://docs.google.com/spreadsheets/d/1UVFem7ICyRmX01QV0xUv4lCS4_k_sDS0OaKrZjG_dtw/edit?usp=sharing|la liste des projets et thématiques existantes> (si votre projet n'existe pas ajoutez le a la liste.)\n\n:dart: Identifiez le (ou les) thématiques (work package WP) auquel le projet se rattache\n\n:dart: Créez un canal Slack dédier a votre projet (le nom du canal doit être `prj-###-<nom du projet>` \"###\" est remplace par l'identifiant du work package) (e.g. pml pour #wp-pml-prediction-ml)\n\n:dart: Ajoutez une description a votre projet\n\n:dart: Copiez et remplissez le message d'accueil type, postez le sur votre nouveau canal et épinglez le pour que les nouveaux arrivant le retrouve facilement.\n\n:dart: Parlez de votre projet dans le canal du(des) work packages auquel il se rattache.\n\n:dart: Recrutez directement dans #reserve-tech #reserve-chefs-projets #reserve-autre"
+                }
+            }
+        ]
+    }
+}
