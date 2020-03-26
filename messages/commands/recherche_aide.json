@@ -1,5 +1,5 @@
 {
-    "command": ["J'ai besoin d'aide pour un projet, block", "besoin-aide-block"],
+    "command": ["J'ai besoin d'aide pour un projet, block", "besoin-aide"],
     "answer": {
         "blocks": [
             {
