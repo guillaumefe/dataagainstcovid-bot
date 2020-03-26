@@ -1,4 +1,6 @@
 {
+	"mrkdwn":true,
+	"text": "Commande inconnue. Utilisez la commande ```/community aide``` pour plus d'information. Ci c'est le resultat d'une interaction programmée vous etes pries d'informer les developpeurs.",
 	"blocks": [
 		{
 			"type": "section",
