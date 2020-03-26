@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var fs = require("fs");
+var request = require('request');
+
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -96,30 +98,42 @@ function respondToCommand(incoming_cmd) {
 
 // Responds to messages sent by user
 app.post('/',function(req,res){
-
+  req_type = 'slash_command';
   answer = respondToCommand(req.body.text);
   // A bit of console logging of the request
   console.log(req.body.trigger_id + ', ' + req.body.channel_name + ', '
     + req.body.user_name + ', ' + req.body.command + ', ' + req.body.text + ', '
+    + req_type + ','
   );
-  console.log(req.body)
-  res.send(answer)
 
+  res.send(answer)
 });
 
 // Responds to interactive commands
+// Following block format:
+// https://api.slack.com/interactivity/handling
 app.post('/response',function(req,res){
+  res.sendStatus(200); // First send the acknowledgement
+  req_type = 'user_interaction';
 
-  // // A bit of console logging of the request
+  // Parse the payload, aka the bit of interest
   req_payload = JSON.parse(req.body.payload);
-
+  // Extract the button value, which must match a command
   incoming_cmd = req_payload.actions[0].value;
-  console.log(incoming_cmd)
-  console.log(req_payload)
   answer = respondToCommand(incoming_cmd);
- 
+  
+  let log_line = req_payload.trigger_id + ', ' + req_payload.channel.name + ', '
+  + req_payload.user.username + ', ' + req_payload.type + ', ' 
+  + req_payload.actions[0].action_id + ', ' + req_type + ',';
+  console.log(log_line);
 
-  res.send(answer)
+  answer.text  = "Answering : " + log_line; // Add detail of question
+  answer.replace_original= false;
+  request.post({ 
+      headers: {'content-type' : 'application/json'}, 
+      url: req_payload.response_url,
+      body: JSON.stringify(answer)
+    }, function(error, response, body){}); 
   
 });
 
