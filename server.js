@@ -78,30 +78,49 @@ for (let key in commands) {
 console.log(command_map);
 console.log(command_list);
 
-// Responds to messages
-app.post('/',function(req,res){
+function respondToCommand(incoming_cmd) {
   let answer = ""
-  if (req.body.text == "") {
+  if (incoming_cmd == "") {
       answer = require('./messages/_.json');
-  } else if (req.body.text.toLowerCase() == "aide") {
+  } else if (incoming_cmd.toLowerCase() == "aide") {
       answer = require('./messages/aide.json');
       // store the command it in the empty section left in "aide.json"
       answer["blocks"][1]["text"]["text"] = command_list
-  } else if (command_map["alias_to_cmd"][req.body.text.toLowerCase()]) {
-      answer = commands[command_map["alias_to_cmd"][req.body.text.toLowerCase()]];
+  } else if (command_map["alias_to_cmd"][incoming_cmd.toLowerCase()]) {
+      answer = commands[command_map["alias_to_cmd"][incoming_cmd.toLowerCase()]];
   } else {
       answer = require('./messages/unknown_command_error.json');
   }
+  return answer;
+}
 
+// Responds to messages sent by user
+app.post('/',function(req,res){
+
+  answer = respondToCommand(req.body.text);
   // A bit of console logging of the request
   console.log(req.body.trigger_id + ', ' + req.body.channel_name + ', '
     + req.body.user_name + ', ' + req.body.command + ', ' + req.body.text + ', '
   );
-
-  console.log("request:")
   console.log(req.body)
   res.send(answer)
 
+});
+
+// Responds to interactive commands
+app.post('/response',function(req,res){
+
+  // // A bit of console logging of the request
+  req_payload = JSON.parse(req.body.payload);
+
+  incoming_cmd = req_payload.actions[0].value;
+  console.log(incoming_cmd)
+  console.log(req_payload)
+  answer = respondToCommand(incoming_cmd);
+ 
+
+  res.send(answer)
+  
 });
 
 port = process.env.PORT || 8000
