@@ -1,13 +1,35 @@
 {
-	"mrkdwn": true,
-	"text": "*Bienvenue sur Community*.\nCe service vous aidera à orienter correctement votre action sur ce slack.\nVous pouvez poser certaines questions à ce robot et ce dernier vous aidera à obtenir la bonne réponse.\nPour obtenir la liste des questions que vous pouvez poser, utilisez la commande 'aide' de cette manière : \n```/community aide```",		
 	"blocks": [
 		{
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-                "text": "*Bienvenue sur Community*.\nCe service vous aidera à orienter correctement votre action sur ce slack.\nVous pouvez poser certaines questions à ce robot et ce dernier vous aidera à obtenir la bonne réponse.\nPour obtenir la liste des questions que vous pouvez poser, utilisez la commande 'aide' de cette manière : \n```/community aide```"
+                "text": "*Bienvenue sur Community*.\nCe service vous aidera à trouver les informations necessaires pour assurer une communication efficace dans ce slack.\n"
 			}
-        }
+		},
+		{
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"action_id": "interactif-_/aide",
+					"value": "aide",
+					"text": {
+						"type": "plain_text",
+						"text": "Que peux faire community :robot_face: ?"
+					}
+				},
+				{
+					"type": "button",
+					"action_id": "interactif-_/au-revoir",
+					"value": "au-revoir",
+					"text": {
+						"type": "plain_text",
+						"text": "Non merci"
+
+					}
+				}
+			]
+		}
     ]
 }
