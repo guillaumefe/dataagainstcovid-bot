@@ -1,0 +1,39 @@
+{
+    "command": ["J'ai besoin d'aide pour un projet, block", "besoin-aide"],
+    "answer": {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text":  "*Votre projet est lancé et vous avez besoin d'aide?*\n"
+                }
+            },
+            {
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "action_id": "interactif-besoin-aide/nouveau-projet",
+                        "value": "nouveau-projet",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Pas encore lancé mon projet"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "action_id": "interactif-besoin-aide/trouve-aide",
+                        "value": "trouve-aide",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Oui"
+
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+

@@ -1,0 +1,14 @@
+{
+    "command": ["au-revoir"],
+    "answer": {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "*A bientot!*\n\n Retrouvez-moi a tout moment en tapant `/community` dans votre barre de message."
+                }
+            }
+        ]
+    }
+}

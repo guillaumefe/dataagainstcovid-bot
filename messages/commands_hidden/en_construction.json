@@ -1,0 +1,14 @@
+{
+    "command": ["en construction"],
+    "answer": {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "Oups! Vous explorez notre bot plus vite que nous arrivons à le développer... Donnez nous un coup de main sur <https://github.com/gefeo/dataagainstcovid-bot|github> :wink:\n\nVerifiez #comment-ca-marche ouc ontactez un de vos modérateur pour repondre à votre question."
+                }
+            }
+        ]
+    }
+}
