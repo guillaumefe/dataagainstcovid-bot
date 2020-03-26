@@ -31,8 +31,23 @@ function commandsFromFolder(command_directory, commands, command_map) {
   let command_files = fs.readdirSync(command_directory);
   for(i=0; i<command_files.length; i++) {
     item = command_files[i];
+    // Only act on JSON files otherwise continue (skip rest of loop)
+    if(item.slice(-5).toLowerCase() != ".json"){
+      console.log(item + " is not a .json file, skipping");
+      continue;
+    }
     
     command_file = require(command_directory + "/" + item);
+    // Only act on valid command JSON files as defined by needing a 
+    // "command" and an "answer" field
+    let check_properties = ("command" in command_file) && ("answer" in command_file);
+    if(!check_properties){
+      console.log(item + "does not contain a valid command object, make sure fields"
+        + "'command'(Array|String) and 'answer' are defined");
+      continue;
+    }
+
+    // Now we have a valid command file lets process it
     // Commands can have aliases, e.g. a shorter name to type
     let new_key = ""
     try { // assume there are multiple names for that command
