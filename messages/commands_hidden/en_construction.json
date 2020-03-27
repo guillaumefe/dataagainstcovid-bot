@@ -6,8 +6,22 @@
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "Oups! Vous explorez notre bot plus vite que nous arrivons à le développer... Donnez nous un coup de main sur <https://github.com/gefeo/dataagainstcovid-bot|github> :wink:\n\nVerifiez #comment-ca-marche ouc ontactez un de vos modérateur pour repondre à votre question."
+                    "text": "Oups! Vous explorez notre bot plus vite que nous arrivons à le développer... Donnez nous un coup de main sur <https://github.com/gefeo/dataagainstcovid-bot/issues|github> :wink:\n\nVerifiez #comment-ca-marche ou contactez un de vos modérateur pour repondre à votre question."
                 }
+            },
+            {
+              "type": "actions",
+              "elements": [
+                {
+                  "type": "button",
+                  "action_id": "en construction/je veux parler à un modérateur",
+                  "value": "je veux parler à un modérateur",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "Liste des moderateurs"
+                  }
+                }
+              ]
             }
         ]
     }

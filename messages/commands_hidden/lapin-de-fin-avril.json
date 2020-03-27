@@ -1,0 +1,17 @@
+[
+    {
+        "command": ["D, la réponse D."],
+        "answer":
+        {
+            "blocks": [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "C'est mon dernier mot Jean-Pierre."
+                    }
+                }
+            ]
+        }
+    }
+]

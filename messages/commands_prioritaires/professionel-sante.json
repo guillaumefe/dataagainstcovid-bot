@@ -1,0 +1,14 @@
+{
+    "command": ["je suis professionnel de santé", "professionel-sante"],
+    "answer": {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "Vous êtes un professionnel médical, avec un projet ou vous avez besoin d'aide?\nRejoignez le channel #medical-experts en cliquant sur le lien ci-dessous :\nhttps://dataagainstcovid-19.slack.com/archives/C01056Y0Y8G"
+                }
+            }
+        ]
+    }
+}

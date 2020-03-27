@@ -1,0 +1,14 @@
+{
+    "command": ["je veux contribuer à la collecte de données", "recolte-donnees"],
+    "answer": {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "*Premières étapes:*\n1. Créez un compte Github puis connectez-vous\n2. Lisez  <https://github.com/opencovid19-fr/comment-contribuer|ce README>. \n\nTout ce passe sur github donc rendez-vous là-bas.  \n Si vous avez des questions posez les sur #wp-dat-data-collection-covid19-fr nous serons ravis d'y repondre.\n\nVenez nombreux, nous avons besoin de main d'oeuvre. :muscle: :muscle:"
+                }
+            }
+        ]
+    }
+}

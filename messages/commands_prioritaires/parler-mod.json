@@ -1,0 +1,14 @@
+{
+    "command": ["Je veux parler à un modérateur", "parler-mod-sante"],
+    "answer": {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "Suivez le lien ci-dessous pour découvrir qui sont <https://dataagainstcovid-19.slack.com/archives/C01072YS7MX/p1584833874003900|nos modérateurs>"
+                }
+            }
+        ]
+    }
+}
