@@ -224,9 +224,11 @@ app.post('/response',function(req,res){
     incoming_cmd = req_payload.actions[0].selected_option.value;
     action_log = "static_select-" + incoming_cmd;
   }
+  if(incoming_cmd ==  "no-action"){
+    return;
+  }
   answer = respondToCommand(incoming_cmd);
 
-  let user_name = req_payload.user.name;
   let log_line = privateLogLine(req_payload.trigger_id, req_payload.channel.name,
     req_payload.user.name, req_payload.type, action_log , req_type);
   console.log(log_line);

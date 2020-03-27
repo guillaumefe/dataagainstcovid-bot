@@ -1,0 +1,15 @@
+
+{
+    "command": ["Afficher le message type de description de projet", "projet-message-type"],
+    "answer": {     
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "<résumé du canal>, vous êtes les bienvenues!\n\n*Le but de cette chaîne est de:*\n:dart:  but 1\n:dart:  but 2\n\n*Ces buts sont remplis par:*\nrésultats 1\n\n*Comment participer:*\nCe que fait le groupe concretement; en quoi consiste:\n1. effort 0.001 (un coup de pouce)\n2. effort 1 (un peu d'aide, occasionel)\n3. effort 2 (Participant regulier)\n\n*Quelques conseils:*\n:warning: Quelques chose a eviter, qui peut nuire a l'organisation du groupe\n:heavy_check_mark: Un conseil utile\n\n*Compétences et expérience recherchées:* \nDes compétences utiles\n\n*Addressez vos questions à:* <les créateurs du canal>"
+                }
+            }
+        ]
+    }
+}

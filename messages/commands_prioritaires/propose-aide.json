@@ -7,7 +7,7 @@
           "type": "section",
           "text": {
             "type": "mrkdwn",
-            "text": "Veuillez remplir <https://docs.google.com/forms/d/e/1FAIpQLSdiw56eQNGkm5uQt7mlcR32n--J2rwfSgOYpF9eAKThFNv7rA/viewform|notre formulaire>. Ces informations sont accessibles au chefs de projet qui vous contecteront selon leur besoin."
+            "text": "Si vous ne l'avez pas fait, veuillez remplir <https://docs.google.com/forms/d/e/1FAIpQLSdiw56eQNGkm5uQt7mlcR32n--J2rwfSgOYpF9eAKThFNv7rA/viewform|notre formulaire>. Ces informations sont accessibles au chefs de projet qui vous contecteront selon leur besoin.\n\nVous pouvez aussi explorer la section suivante qui vous propose d'autre méthodes de proposer votre aide:"
           }
         },
         {
@@ -19,7 +19,7 @@
               "value": "trouver-projet-en-cour",
               "text": {
                 "type": "plain_text",
-                "text": "Comment trouver un projet en cour"
+                "text": "Trouver un projet en cours"
               }
             }
           ]

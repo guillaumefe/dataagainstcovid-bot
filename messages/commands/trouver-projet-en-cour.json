@@ -6,14 +6,14 @@
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": ":eyes: Gardez aussi un oeil sur les canaux #reserve-tech, #reserve-autre et #reserve-chef-de-projet :eyes:\n Des projets et missions y sont presentées."
+          "text": ":eyes: Gardez un oeil sur les canaux #reserve-tech, #reserve-autre et #reserve-chef-de-projet :eyes:\n Des projets et missions y sont presentées."
         }
       },
       {
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": ":world_map: :mag: Explorez maintenant nos canaux de 'work package': ce sont nos thématiques principales, les canaux commencent tous par `#wp...`."
+          "text": ":world_map: :mag: Explorez maintenant nos canaux de 'work package': ce sont nos thématiques principales, les canaux commencent tous par `#wp...`. Ou bien rendez vous sur GitHub pour vous mettre tout de suite à la collecte de données et autres problèmes."
         }
       },
       {
@@ -26,6 +26,16 @@
             "text": {
               "type": "plain_text",
               "text": "Qu'est ce qu'un WP?"
+            }
+          },
+          {
+            "type": "button",
+            "action_id": "trouver-projet-en-cour/no-action",
+            "value": "no-action",
+            "url": "https://github.com/opencovid19-fr/data",
+            "text": {
+              "type": "plain_text",
+              "text": "GitHub :computer: "
             }
           }
         ]

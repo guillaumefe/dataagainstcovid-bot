@@ -52,7 +52,7 @@
 				"elements": [
 					{
 						"type": "mrkdwn",
-						"text": "👀 Toutes les commandes `/community doc`\n❓Recevez de l'aide en ..."
+						"text": "👀 Toutes les commandes `/community doc`\n❓Aidez le developement de <https://github.com/gefeo/dataagainstcovid-bot|community sur github>"
 					}
 				]
 			}

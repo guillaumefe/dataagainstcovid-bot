@@ -1,0 +1,115 @@
+[
+    {
+        "command": ["Messages de bienvenue", "bienvenue"],
+        "answer": 
+        {
+            "blocks": 
+            [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "*Bonjour à tous les nouveaux arrivants.* Et merci de toutes vos bonnes volontés :pray:\nTout d'abord, avez vous rempli le formulaire de compétences? Il nous aide à trouver les compétences nécessaires au bon fonctionnement des projets."
+                    }
+                },
+                {
+                    "type": "actions",
+                    "elements": 
+                    [
+                        {
+                            "type": "button",
+                            "url": "https://docs.google.com/forms/d/e/1FAIpQLSdiw56eQNGkm5uQt7mlcR32n--J2rwfSgOYpF9eAKThFNv7rA/viewform", 
+                            "action_id": "interactif-bienvenue-url/aide",
+                            "value": "bienvenue-2",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Remplir le formulaire :page_with_curl:"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "action_id": "interactif-bienvenue/aide",
+                            "value": "bienvenue-2",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "C'est fait."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "command": ["Notre mission", "mission"],
+        "answer": 
+        {
+            "blocks": 
+            [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "Le but de cette initiative était initialement *de rassembler et promouvoir des données ouvertes* sur l'épidémie de Coronavirus COVID-19 qui frappe en ce moment la France et le reste du monde."
+                    }
+                },
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "Notre mission s’est étendue et met à disposition des compétences de data scientists bénévoles à tout sujet relatif à la gestion de la crise. Pour ce faire nous avons les activités suivantes:\n\n:dart: Centralisation et ouverture des données COVID-19 (#wp-dat-data-collection-covid19-fr)\n:dart: Recueil et réponse aux besoin médicaux signalés (#medical-experts)\n:dart: Visualisation des données (#wp-viz-visualisation-data)\n:dart: Prévisions de l’évolution de la maladie (#wp-pml-prediction-ml)\nAinsi que bien d'autres en conseil légal, communication, presse, et administration du groupe."
+                    }
+                },
+                {
+                    "type": "actions",
+                    "elements": [
+                        {
+                            "type": "button",
+                            "action_id": "interactif-mission/propose-aide",
+                            "value": "propose-aide",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Comment aider"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "action_id": "interactif-mission/nouveau-projet",
+                            "value": "nouveau-projet",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "J'ai une idée de projet"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "action_id": "interactif-mission/documents",
+                            "value": "documents",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Accédez à nos documents"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "command": ["Retrouvez nos documents", "documents"],
+        "answer":
+        {
+            "blocks": 
+            [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "Retrouvez tous nos documents sur <https://drive.google.com/drive/folders/1c_9G10ncb2GmuCVcUgoqAptm2DObFGSC?usp=sharing|Google drive>\n\nImmense merci à tous pour votre aide !!:heart:\n\nVotre équipe de modération (@mods) data-against-covid19."
+                    }
+                }
+            ]
+        }
+    }
+]
+

@@ -12,6 +12,15 @@
 			"elements": [
 				{
 					"type": "button",
+					"action_id": "interactif-_/bienvenue",
+					"value": "bienvenue",
+					"text": {
+						"type": "plain_text",
+						"text": "Messages de bienvenue!"
+					}
+				},
+				{
+					"type": "button",
 					"action_id": "interactif-_/aide",
 					"value": "aide",
 					"text": {
