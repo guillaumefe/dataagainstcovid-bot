@@ -25,11 +25,34 @@
 				}
 			},
 			{
+				"type": "actions",
+				"elements": [
+					{
+						"type": "static_select",
+						"placeholder": {
+							"type": "plain_text",
+							"text": "Choisissez une question...",
+							"emoji": true
+						},
+						"options": [
+							{
+								"text": {
+									"type": "plain_text",
+									"text": "placehorder_0",
+									"emoji": true
+								},
+								"value": "value-0"
+							}
+						]
+					}
+				]
+			},
+			{
 				"type": "context",
 				"elements": [
 					{
 						"type": "mrkdwn",
-						"text": "👀 Toutes les commandes `/community doc`\n❓Recevez de l'aide en ..."
+						"text": "❓Aidez le developement de <https://github.com/gefeo/dataagainstcovid-bot|community sur github>.\nL'ajout de commande se fait sans code:smile:"
 					}
 				]
 			}

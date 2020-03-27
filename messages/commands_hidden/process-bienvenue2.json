@@ -1,0 +1,41 @@
+[
+    {
+        "command": ["Message de bienvenue 2", "bienvenue-2"],
+        "answer": 
+        {
+            "blocks": 
+            [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "Vous êtes à 2 pas :footprints: de votre prochaine contribution à nos projets. :heavy_check_mark:\nSi à tout moment vous êtes perdus:question:, retrouvez cette aide avec la commande : \n`/community aide`\nLes différentes sous-commandes seront affichées. :eyes:\nVous pourrez entre autres : proposer votre aide, contribuer à la collecte de données sur le Covid-19, proposer un projet, etc.\n\nBonnes contributions à tous :heart:"
+                    }
+                },
+                {
+                    "type": "actions",
+                    "elements": [
+                        {
+                            "type": "button",
+                            "action_id": "interactif-bienvenue-2/mission",
+                            "value": "mission",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Notre mission"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "action_id": "interactif-bienvenue-2/aide",
+                            "value": "aide",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Continuer à la page d'aide"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]
