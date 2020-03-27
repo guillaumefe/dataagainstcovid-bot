@@ -1,0 +1,39 @@
+{
+	"command": ["documentation", "doc", "doc-user"],
+	"answer":
+	{
+		"blocks": [
+			{
+				"type": "section",
+				"text": {
+					"type": "mrkdwn",
+					"text": "*Bienvenue sur Community*, le robot d'aide à l'action du slack *Data Against Covid-19*\nMerci d'être ici, nous avons besoin de vous!\n\nPour poser une question à ce robot, utilisez la syntax suivante : ```/community [Ma Question]```\nQuestions que vous pouvez posez (cmd courte entre paranthèses):\n"
+				}
+			},
+			{
+				"type": "section",
+				"text": {
+					"type": "mrkdwn",
+					"text": " "
+				}
+			},
+			{
+				"type": "section",
+				"text": {
+					"type": "mrkdwn",
+					"text": "\nPar exemple : ```/community je veux proposer mon aide```\n*La liste des questions va s'accroitre de manière régulière jusqu'à pouvoir vous aider dans tous les aspects de votre participation.*"
+				}
+			},
+			{
+				"type": "context",
+				"elements": [
+					{
+						"type": "mrkdwn",
+						"text": "👀 Toutes les commandes `/community doc`\n❓Recevez de l'aide en ..."
+					}
+				]
+			}
+		]
+	}
+}
+

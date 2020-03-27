@@ -1,0 +1,30 @@
+{
+	"command": ["documentation pour developeur", "doc-dev"],
+	"answer":
+	{
+		"blocks": [
+			{
+				"type": "section",
+				"text": {
+					"type": "mrkdwn",
+					"text": "Bienvenue dans la doc, retrouvez toutes les commandes ici:\n"
+				}
+			},
+			{
+				"type": "section",
+				"text": {
+					"type": "mrkdwn",
+					"text": ""
+				}
+			},
+			{
+				"type": "section",
+				"text": {
+					"type": "mrkdwn",
+					"text": "\nToutes ces commandes sont accessibles en faisant : ```/community <la commande>```\n\n:spider: :spider: 'With great power comes great responsibility' :spider_web: :spider:"
+				}
+			}
+		]
+	}
+}
+

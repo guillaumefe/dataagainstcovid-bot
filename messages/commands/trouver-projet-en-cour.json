@@ -1,0 +1,42 @@
+{
+  "command": ["Je veux trouver un projet en cour", "trouver-projet-en-cour"],
+  "answer": {
+    "blocks": [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": ":eyes: Gardez aussi un oeil sur les canaux #reserve-tech, #reserve-autre et #reserve-chef-de-projet :eyes:\n Des projets et missions y sont presentées."
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": ":world_map: :mag: Explorez maintenant nos canaux de 'work package': ce sont nos thématiques principales, les canaux commencent tous par `#wp...`."
+        }
+      },
+      {
+        "type": "actions",
+        "elements": [
+          {
+            "type": "button",
+            "action_id": "trouver-projet-en-cour/wp-projet",
+            "value": "en construction",
+            "text": {
+              "type": "plain_text",
+              "text": "Qu'est ce qu'un WP?"
+            }
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "D'autres methodes de partage de l'info sont en cours de mise au point."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "command": ["je veux proposer mon aide", "propose-aide"],
+    "answer": {
+      "blocks": [
+        {
+          "type": "section",
+          "text": {
+            "type": "mrkdwn",
+            "text": "Veuillez remplir <https://docs.google.com/forms/d/e/1FAIpQLSdiw56eQNGkm5uQt7mlcR32n--J2rwfSgOYpF9eAKThFNv7rA/viewform|notre formulaire>. Ces informations sont accessibles au chefs de projet qui vous contecteront selon leur besoin."
+          }
+        },
+        {
+          "type": "actions",
+          "elements": [
+            {
+              "type": "button",
+              "action_id": "propose-aide/trouver-projet-en-cour",
+              "value": "trouver-projet-en-cour",
+              "text": {
+                "type": "plain_text",
+                "text": "Comment trouver un projet en cour"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
