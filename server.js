@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var fs = require("fs");
 var request = require('request');
+const crypto = require('crypto');
 
 var app = express();
 
@@ -38,13 +39,24 @@ function commandsFromFolder(command_directory, commands, command_map) {
     }
     
     command_file = require(command_directory + "/" + item);
-    // Only act on valid command JSON files as defined by needing a 
+    if (Array.isArray(command_file)){
+      command_file.forEach(function (command_item, _){
+        parseAndMapCommand(command_item, commands, command_map);
+      });
+    } else {
+      parseAndMapCommand(command_file, commands, command_map)
+    }
+  }
+}
+
+function parseAndMapCommand(command_file, commands, command_map){
+  // Only act on valid command JSON files as defined by needing a 
     // "command" and an "answer" field
     let check_properties = ("command" in command_file) && ("answer" in command_file);
     if(!check_properties){
       console.log(item + "does not contain a valid command object, make sure fields"
         + "'command'(Array|String) and 'answer' are defined");
-      continue;
+      return;
     }
 
     // Now we have a valid command file lets process it
@@ -61,30 +73,65 @@ function commandsFromFolder(command_directory, commands, command_map) {
     }
     // Match the answer to the principal command name (n.b. the first to appear)
     commands[new_key.toLowerCase()] = command_file["answer"];
-  }
 }
 
-
+let cmd_list_prefix = ' :arrow_right:  ';
+let cmd_list_alias_pre = ' (aka: ';
+let cmd_list_alias_sep = ';';
+let cmd_list_alias_post = ')';
 function generateCommandHelp(commands, command_map) {
   // Generates markdown text with the name of the commands 
   // and their known aliases.
   let command_list = "";
   for (let key in commands) {
-    command_list += ' :arrow_right:  ' + key + ' ';
+    command_list += cmd_list_prefix + key;
     for (let i=1; i<command_map["cmd_to_alias"][key].length; i++){
       if (i==1){
-        command_list += '(aka: ';
+        command_list += cmd_list_alias_pre;
       }
       command_list += command_map["cmd_to_alias"][key][i]
       if (i==command_map["cmd_to_alias"][key].length-1){
-        command_list += ')';
+        command_list += cmd_list_alias_post;
       } else {
-        command_list += '; ';
+        command_list += cmd_list_alias_sep;
       }
     }
     command_list += "\n";
   }
   return command_list;
+}
+
+function PrepareSpecialAnswers(command_lists, commands, command_map) {
+  // Prepares answers that need additional combining 
+  // aide; documentation and doc-dec all parse a list of commands into the
+  // message
+  for (let incoming_cmd in command_lists) {
+    let answer = commands[command_map.alias_to_cmd[incoming_cmd.toLowerCase()]];
+    // store the command it in the empty section left in "aide.json"
+    console.log(incoming_cmd);
+    answer.blocks[1].text.text = command_lists[incoming_cmd];
+    // Create a drop down list with up to date actions
+    if (answer.blocks.length >=4 && answer.blocks[3].type == "actions" 
+      && answer.blocks[3].elements[0].type == "static_select"){
+        // Get a template element
+        default_opt = JSON.stringify(answer.blocks[3].elements[0].options[0]);
+        answer.blocks[3].elements[0].options.length = 0; // delete dropdown options
+        command_lists[incoming_cmd].split("\n").forEach(function(list_line, l_index){
+          // Extract the command form the list_line
+          list_cmd = list_line.slice(cmd_list_prefix.length).split(cmd_list_alias_pre)[0];
+          if (!command_map["alias_to_cmd"][list_cmd.toLowerCase()]){
+            list_cmd = "D, la réponse D."
+          }
+          // Deep copy of default option
+          answer.blocks[3].elements[0].options.push(JSON.parse(default_opt));
+          // Assign to drop down options
+          answer.blocks[3].elements[0].options[l_index].text.text = list_cmd;
+          answer.blocks[3].elements[0].options[l_index].value = list_cmd;
+        });
+        console.log(JSON.stringify(answer.blocks[3]));
+    }
+    commands[command_map.alias_to_cmd[incoming_cmd.toLowerCase()]] = answer;
+  }
 }
 // ============================
 /// Preprocessing
@@ -100,31 +147,31 @@ app.get('/',function(req,res){
 
 // Collect valid commands from commands.json and messages/commands/ folder 
 // and messages/commands_hidden
-let commands = require('./commands.json'); // simple text commands
-for (let key in commands) {
-  command_map.add_key(key, key);
-}
+let commands = {}; // simple text commands
 // Parse commands in folders
+let command_lists = {};
+commandsFromFolder('./messages/commands_prioritaires/', commands, command_map);
+command_lists["aide"] = generateCommandHelp(commands, command_map);
 commandsFromFolder('./messages/commands/', commands, command_map);
-let command_list = generateCommandHelp(commands, command_map);
+command_lists["documentation"] = generateCommandHelp(commands, command_map);
 commandsFromFolder('./messages/commands_hidden/', commands, command_map);
+command_lists["doc-dev"] = generateCommandHelp(commands, command_map);
+
+PrepareSpecialAnswers(command_lists, commands, command_map);
 
 console.log(command_map);
-console.log(command_list);
+console.log(command_lists);
 
 // ============================
 /// Event handling
 // ============================
+
 
 function respondToCommand(incoming_cmd) {
   // Respond to a command that was received.
   let answer = ""
   if (incoming_cmd == "") {
       answer = require('./messages/_.json');
-  } else if (incoming_cmd.toLowerCase() == "aide") {
-      answer = require('./messages/aide.json');
-      // store the command it in the empty section left in "aide.json"
-      answer["blocks"][1]["text"]["text"] = command_list
   } else if (command_map["alias_to_cmd"][incoming_cmd.toLowerCase()]) {
       answer = commands[command_map["alias_to_cmd"][incoming_cmd.toLowerCase()]];
   } else {
@@ -132,16 +179,29 @@ function respondToCommand(incoming_cmd) {
   }
   return answer;
 }
+function privateLogLine(trigger_id, channel, user_name, payload_type, 
+  action, request_type){
+  console.log(user_name);
+  // only hexadecimal digits
+  let hashed_user_name = "";
+  try {
+    hashed_user_name = crypto.createHash('sha1').update(user_name).digest('hex'); 
+  } catch (error) {
+    hashed_user_name = "hasherror";
+  }
+  
+  return trigger_id + ', ' + channel + ', ' + 'userid_' + hashed_user_name 
+  + ', ' + payload_type + ', ' + action + ', ' + request_type + ',';
+
+}
 
 // Responds to messages sent by user
 app.post('/',function(req,res){
   req_type = 'slash_command';
   answer = respondToCommand(req.body.text);
   // A bit of console logging of the request
-  console.log(req.body.trigger_id + ', ' + req.body.channel_name + ', '
-    + req.body.user_name + ', ' + req.body.command + ', ' + req.body.text + ', '
-    + req_type + ','
-  );
+  console.log(privateLogLine(req.body.trigger_id, req.body.channel_name, req.body.user_name,
+     req.body.command , req.body.text ,req_type));
   res.send(answer)
 });
 
@@ -154,13 +214,21 @@ app.post('/response',function(req,res){
 
   // Parse the payload, aka the bit of interest
   req_payload = JSON.parse(req.body.payload);
-  // Extract the button value, which must match a command
-  incoming_cmd = req_payload.actions[0].value;
+  // Extract the interaction value, which must match a command
+  let incoming_cmd = "";
+  let action_log = "";
+  if(req_payload.actions[0].type == "button"){
+    incoming_cmd = req_payload.actions[0].value;
+    action_log = req_payload.actions[0].action_id + '+' + incoming_cmd;
+  } else if (req_payload.actions[0].type == "static_select"){
+    incoming_cmd = req_payload.actions[0].selected_option.value;
+    action_log = "static_select-" + incoming_cmd;
+  }
   answer = respondToCommand(incoming_cmd);
-  
-  let log_line = req_payload.trigger_id + ', ' + req_payload.channel.name + ', '
-  + req_payload.user.username + ', ' + req_payload.type + ', ' 
-  + req_payload.actions[0].action_id + ', ' + req_type + ',';
+
+  let user_name = req_payload.user.name;
+  let log_line = privateLogLine(req_payload.trigger_id, req_payload.channel.name,
+    req_payload.user.name, req_payload.type, action_log , req_type);
   console.log(log_line);
 
   answer.text  = "Answering : " + log_line; // Add detail of question
