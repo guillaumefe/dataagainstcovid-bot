@@ -39,9 +39,10 @@ Avant de modifier `server.js` assurez-vous que ceci ne peut pas être fait plus 
 ## Configurer votre Slack App
 
 Cette application a vocation à être installée sur slack à travers la slack api. Elle n'est pas distribué, par slack app-store, mais vous pouvez :
-1. Forker votre copie
-2. Configurer un server sur lequel la faire tourner
-3. Relier le server à la slack API
+1. Forkez votre copie
+2. Configurez un server sur lequel la faire tourner
+3. Reliez le server à la slack API
+
 Et c'est bon!
 
 [Guide de configuration precis a venir]
