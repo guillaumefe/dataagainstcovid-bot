@@ -21,8 +21,10 @@ Puis suivez les boutons!
 - **Ajout de commandes/boutons à l'application**
 
  1. Forkez le projet
- 2. Ajoutez un fichier
- 3. Lancez une sur la branch `develop` (on utilise gitflow ici). Votre branche devra s'appeller `feature/new-command-<nom de vos commandes>`.
+ 2. Lancez une nouvelle branche partant de la branche `develop` (on utilise gitflow ici). Votre branche devra s'appeller `feature/new-command-<nom de vos commandes>`.
+ 3. Ajoutez des fichiers sur cette nouvelle branche
+ 4. Lancez une pull request de votre nouvelle branche sur la branche `develop` du repo parent. Un admin la verifiera et l'approuvera.
+
 
 Plus de detail [plus bas](#ajout-d-une-commande).
 
