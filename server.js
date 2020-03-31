@@ -1,12 +1,12 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var fs = require("fs");
-var request = require('request');
-var favicon = require('serve-favicon')
-var path = require('path')
+let express = require("express");
+let bodyParser = require("body-parser");
+let fs = require("fs");
+let request = require('request');
+let favicon = require('serve-favicon')
+let path = require('path')
 const crypto = require('crypto');
 
-var app = express();
+let app = express();
 
 // TODO paackage the command infrastructure into a module or whatever JS 
 // calls them
