@@ -245,5 +245,5 @@ app.post('/response',function(req,res){
 
 port = process.env.PORT || 8000
 app.listen(port,function(){
-  console.log("Started on PORT 8000");
+  console.log("Started on PORT " + port);
 })
