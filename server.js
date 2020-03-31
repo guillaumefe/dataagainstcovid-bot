@@ -1,16 +1,16 @@
-let express = require("express");
-let bodyParser = require("body-parser");
-let fs = require("fs");
-let request = require('request');
-let favicon = require('serve-favicon')
-let path = require('path')
+const express = require("express");
+const bodyParser = require("body-parser");
+const fs = require("fs");
+const request = require('request');
+const favicon = require('serve-favicon')
+const path = require('path')
 const crypto = require('crypto');
 
-let app = express();
+const app = express();
 
 // TODO paackage the command infrastructure into a module or whatever JS 
 // calls them
-let command_map = {
+const command_map = {
   "alias_to_cmd": {},
   "cmd_to_alias": {},
   // TODO: make command_map an object
@@ -31,7 +31,7 @@ function commandsFromFolder(command_directory, commands, command_map) {
   // Explores all json files in a directory and looks for files matching the 
   // command format of objects with fields "command" and "answer"
 
-  let command_files = fs.readdirSync(command_directory);
+  const command_files = fs.readdirSync(command_directory);
   for(i=0; i<command_files.length; i++) {
     item = command_files[i];
     // Only act on JSON files otherwise continue (skip rest of loop)
@@ -54,7 +54,7 @@ function commandsFromFolder(command_directory, commands, command_map) {
 function parseAndMapCommand(command_file, commands, command_map){
   // Only act on valid command JSON files as defined by needing a 
     // "command" and an "answer" field
-    let check_properties = ("command" in command_file) && ("answer" in command_file);
+    const check_properties = ("command" in command_file) && ("answer" in command_file);
     if(!check_properties){
       console.log(item + "does not contain a valid command object, make sure fields"
         + "'command'(Array|String) and 'answer' are defined");
@@ -77,15 +77,15 @@ function parseAndMapCommand(command_file, commands, command_map){
     commands[new_key.toLowerCase()] = command_file["answer"];
 }
 
-let cmd_list_prefix = ' :arrow_right:  ';
-let cmd_list_alias_pre = ' (aka: ';
-let cmd_list_alias_sep = ';';
-let cmd_list_alias_post = ')';
+const cmd_list_prefix = ' :arrow_right:  ';
+const cmd_list_alias_pre = ' (aka: ';
+const cmd_list_alias_sep = ';';
+const cmd_list_alias_post = ')';
 function generateCommandHelp(commands, command_map) {
   // Generates markdown text with the name of the commands 
   // and their known aliases.
   let command_list = "";
-  for (let key in commands) {
+  for (const key in commands) {
     command_list += cmd_list_prefix + key;
     for (let i=1; i<command_map["cmd_to_alias"][key].length; i++){
       if (i==1){
@@ -107,8 +107,8 @@ function PrepareSpecialAnswers(command_lists, commands, command_map) {
   // Prepares answers that need additional combining 
   // aide; documentation and doc-dec all parse a list of commands into the
   // message
-  for (let incoming_cmd in command_lists) {
-    let answer = commands[command_map.alias_to_cmd[incoming_cmd.toLowerCase()]];
+  for (const incoming_cmd in command_lists) {
+    const answer = commands[command_map.alias_to_cmd[incoming_cmd.toLowerCase()]];
     // store the command it in the empty section left in "aide.json"
     console.log(incoming_cmd);
     answer.blocks[1].text.text = command_lists[incoming_cmd];
@@ -150,9 +150,9 @@ app.get('/',function(req,res){
 
 // Collect valid commands from commands.json and messages/commands/ folder 
 // and messages/commands_hidden
-let commands = {}; // simple text commands
+const commands = {}; // simple text commands
 // Parse commands in folders
-let command_lists = {};
+const command_lists = {};
 commandsFromFolder('./messages/commands_prioritaires/', commands, command_map);
 command_lists["aide"] = generateCommandHelp(commands, command_map);
 commandsFromFolder('./messages/commands/', commands, command_map);
@@ -232,7 +232,7 @@ app.post('/response',function(req,res){
   }
   answer = respondToCommand(incoming_cmd);
 
-  let log_line = privateLogLine(req_payload.trigger_id, req_payload.channel.name,
+  const log_line = privateLogLine(req_payload.trigger_id, req_payload.channel.name,
     req_payload.user.name, req_payload.type, action_log , req_type);
   console.log(log_line);
 
