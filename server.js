@@ -2,6 +2,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var fs = require("fs");
 var request = require('request');
+var favicon = require('serve-favicon')
+var path = require('path')
 const crypto = require('crypto');
 
 var app = express();
@@ -137,6 +139,7 @@ function PrepareSpecialAnswers(command_lists, commands, command_map) {
 /// Preprocessing
 // ============================
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
