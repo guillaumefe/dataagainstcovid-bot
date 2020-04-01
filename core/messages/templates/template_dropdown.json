@@ -1,0 +1,23 @@
+{
+    "type": "actions",
+    "elements": [
+        {
+            "type": "static_select",
+            "placeholder": {
+                "type": "plain_text",
+                "text": "Select an item",
+                "emoji": true
+            },
+            "options": [
+                {
+                    "text": {
+                        "type": "plain_text",
+                        "text": "placehorder_0",
+                        "emoji": true
+                    },
+                    "value": "value-0"
+                }
+            ]
+        }
+    ]
+}
