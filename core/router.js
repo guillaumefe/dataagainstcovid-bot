@@ -1,3 +1,6 @@
+const commands_infrastructure = require('./commands')
+const answers_infrastructure = require('./answers')
+const request = require('request')
 
 module.exports = function(app) {
 
@@ -8,9 +11,10 @@ module.exports = function(app) {
     // Responds to messages sent by user
     app.post('/',function(req,res){
         req_type = 'slash_command'
-        answer = respondToCommand(req.body.text)
+        answer = commands_infrastructure.respondToCommand(req.body.text)
         // A bit of console logging of the request
-        console.log(privateLogLine(req.body.trigger_id, req.body.channel_name, req.body.user_name,
+        console.log(answers_infrastructure.privateLogLine(
+            req.body.trigger_id, req.body.channel_name, req.body.user_name,
             req.body.command , req.body.text ,req_type))
         res.send(answer)
     })
@@ -37,9 +41,10 @@ module.exports = function(app) {
         if(incoming_cmd ==  "no-action"){
             return
         }
-        answer = respondToCommand(incoming_cmd)
+        answer = commands_infrastructure.respondToCommand(incoming_cmd)
 
-        const log_line = privateLogLine(req_payload.trigger_id, req_payload.channel.name,
+        const log_line = answers_infrastructure.privateLogLine(
+            req_payload.trigger_id, req_payload.channel.name,
             req_payload.user.name, req_payload.type, action_log , req_type)
         console.log(log_line)
 

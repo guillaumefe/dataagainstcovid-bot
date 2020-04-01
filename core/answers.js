@@ -1,8 +1,8 @@
+const crypto = require('crypto')
 const command_infrastructure = require('./commands');
+
 const cmd_list_prefix = command_infrastructure.cmd_list_prefix
 const cmd_list_alias_pre = command_infrastructure.cmd_list_alias_pre
-const cmd_list_alias_sep = command_infrastructure.cmd_list_alias_sep
-const cmd_list_alias_post = command_infrastructure.cmd_list_alias_post
 
 const PrepareSpecialAnswers = function(command_lists, commands, command_map) {
   // Prepares answers that need additional combining 
